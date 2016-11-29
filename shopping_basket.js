@@ -3,7 +3,9 @@ var shopping_basket = {
   items: [],
   total: 0,
   totalize: function(price) { return this.total += price; },
-  add: function( item ) { this.items.push( item );}
+  add: function( item ) { this.items.push( item );},
+  remove: function() { this.items.pop();},
+  empty: function() { this.items = [];}
 
 
   };

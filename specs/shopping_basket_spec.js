@@ -19,6 +19,7 @@ describe('Shopping Basket', function(){
   //--------------------------------------------------------
   it('should add item to basket', 
    function(){
+      shopping_basket.empty();
       shopping_basket.add(jaffaCakes);
       shopping_basket.add(milk);
       shopping_basket.add(chicken);
@@ -26,7 +27,25 @@ describe('Shopping Basket', function(){
       assert.equal(4, shopping_basket.items.length);
    });
 
+  //--------------------------------------------------------
+  it('should empty basket', 
+   function(){
+      shopping_basket.empty();
+      shopping_basket.add(jaffaCakes);
+      assert.equal(1, shopping_basket.items.length);
+      shopping_basket.empty();
+      assert.equal(0, shopping_basket.items.length);
+   });
 
+  //--------------------------------------------------------
+  it('should remove item from basket', 
+   function(){
+      shopping_basket.empty();
+      shopping_basket.add(jaffaCakes);
+      shopping_basket.add(milk);
+      shopping_basket.remove();
+      assert.equal(1, shopping_basket.items.length);
+   });
 
 
   it('should have total', 
