@@ -1,26 +1,20 @@
 var shopping_basket = {
-  //basket: [{ name: 'Jaffa Cakes', price: 2.49}],
   items: [],
   total: 0,
-  totalize: function(price) { return this.total += price; },
   add: function( item ) { this.items.push( item );},
   remove: function() { this.items.pop();},
-  empty: function() { this.items = [];}
+  empty: function() { this.items = [];},
+  totalize: function() 
+  { 
+    this.total = 0;
+    for (var item of this.items)
+    {
+      this.total += item.price;
+    }
+  }
 
 
   };
-
-    // total = 0;
-    // for (var key in this.basket)
-    //   {
-    //     total += this.basket[key].price;
-    //   }
-    // return total;
-    // }
-
-
-
-
 
 module.exports = shopping_basket;
 
