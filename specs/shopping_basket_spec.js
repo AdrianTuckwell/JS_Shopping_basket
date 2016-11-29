@@ -2,19 +2,11 @@ var shopping_basket = require('../shopping_basket');
 
 var assert = require('assert');
 
-// var shopping = require("../item");
-// var jaffaCakes = shopping.jaffaCakes;
-// var milk = shopping.milk;
-// var chicken = shopping.chicken;
-// var eggs = shopping.eggs;
-
-
 var jaffaCakes = { name: "Jaffa Cakes", price: 2.49,};
 var milk = { name: "milk", price: 0.69,};
 var chicken = { name: "chicken", price: 5.49,};
 var eggs = { name: "eggs", price: 10.00,};
 var egg = { name: "egg", price: 1,};
-
 
 describe('Shopping Basket', function(){
   //--------------------------------------------------------
@@ -23,6 +15,8 @@ describe('Shopping Basket', function(){
       assert.equal(0, shopping_basket.items.length);
    });
 
+  // A shopping basket can have multiple items
+  // It should be able to add and remove items
   //--------------------------------------------------------
   it('should add item to basket', 
    function(){
@@ -54,7 +48,7 @@ describe('Shopping Basket', function(){
       assert.equal(1, shopping_basket.items.length);
    });
 
-
+  //--------------------------------------------------------
   it('should first item have name', 
   function(){
       shopping_basket.empty();
@@ -63,6 +57,7 @@ describe('Shopping Basket', function(){
       assert.equal("egg", shopping_basket.items[0].name);
   });
 
+  //--------------------------------------------------------
   it('should first item have price', 
   function(){
       shopping_basket.empty();
@@ -71,10 +66,8 @@ describe('Shopping Basket', function(){
       assert.equal(1, shopping_basket.items[0].price);
   });
 
-
-
-
-
+  // We need to find the price of a shopping basket.
+  //--------------------------------------------------------
   it('should have total', 
   function(){
       shopping_basket.empty();
@@ -87,6 +80,29 @@ describe('Shopping Basket', function(){
       assert.equal(18.67, shopping_basket.total);
   });
 
+  //--------------------------------------------------------
+  it('should give 10% discount over £20', 
+  function(){
+      shopping_basket.empty();
+      shopping_basket.add(eggs);
+      shopping_basket.add(eggs);
+      shopping_basket.totalize();
+      shopping_basket.discount();
+      assert.equal(2, shopping_basket.items.length);
+      assert.equal(18.00, shopping_basket.total);
+  });
+
+  //--------------------------------------------------------
+  it('should give 2% discount with loyalty card', 
+  function(){
+      shopping_basket.empty();
+      shopping_basket.add(eggs);
+      shopping_basket.totalize();
+      shopping_basket.discount();
+      shopping_basket.loyalty(true);
+      assert.equal(1, shopping_basket.items.length);
+      assert.equal(9.80, shopping_basket.total);
+  });
 });
 
 
@@ -95,12 +111,10 @@ describe('Shopping Basket', function(){
  
 
 
-        // basket.addItem(item1);
-        // assertEquals(1, basket.countItems());
   
 
 
 
-// We need to find the price of a shopping basket.
-// A shopping basket can have multiple items
-// It should be able to add and remove items
+
+
+

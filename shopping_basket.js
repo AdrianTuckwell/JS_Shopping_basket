@@ -11,10 +11,24 @@ var shopping_basket = {
     {
       this.total += item.price;
     }
+  },
+  discount: function(){
+    if (this.total >= 20)
+    {
+      this.total = (this.total/100.0)*90.0;
+    } 
+  },
+  loyalty: function(card){
+    if (card)
+    {
+      this.total = (this.total/100.0)*98.0;
+    } 
   }
 
 
-  };
+
+
+};
 
 module.exports = shopping_basket;
 
