@@ -88,7 +88,7 @@ describe('Shopping Basket', function(){
       shopping_basket.add(eggs);
       shopping_basket.add(ham);
       shopping_basket.totalize();
-      shopping_basket.discount();
+      shopping_basket.discount(20);
       assert.equal(2, shopping_basket.items.length);
       assert.equal(18.00, shopping_basket.total);
   });
@@ -99,7 +99,7 @@ describe('Shopping Basket', function(){
       shopping_basket.empty();
       shopping_basket.add(eggs);
       shopping_basket.totalize();
-      shopping_basket.discount();
+      shopping_basket.discount(20);
       shopping_basket.loyalty(true);
       assert.equal(1, shopping_basket.items.length);
       assert.equal(9.80, shopping_basket.total);
@@ -150,7 +150,7 @@ describe('Shopping Basket', function(){
       shopping_basket.add(eggs);
       shopping_basket.add(egg);
       shopping_basket.totalize();
-      shopping_basket.discount();
+      shopping_basket.discount(20);
       shopping_basket.loyalty(true);
       assert.equal(4, shopping_basket.items.length);
       assert.equal(18.52, shopping_basket.total);
@@ -164,7 +164,7 @@ describe('Shopping Basket', function(){
       shopping_basket.add(chicken);
       shopping_basket.add(eggs);
       shopping_basket.add(ham);
-      shopping_basket.sum(true);
+      shopping_basket.sum(true,20);
       assert.equal(5, shopping_basket.items.length);
       assert.equal(25.28, shopping_basket.total);
   });

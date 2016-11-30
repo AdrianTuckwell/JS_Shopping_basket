@@ -15,7 +15,6 @@ var shopping_basket = {
             return 1
         return 0 //default return value (no sorting)
     })
-
     var bogof = ""; // include bogof functionality
     for (var item of this.items)
     {
@@ -27,9 +26,9 @@ var shopping_basket = {
       }
     }
   }, //---------------------------------------------------
-  discount: function() // provide discount if itme > £20
+  discount: function(cut_off) // provide discount if itme > £20
   {
-    if (this.total >= 20)
+    if (this.total >= cut_off)
     {
       this.total = ((this.total/100.0)*90.0).toFixed(2);
     } 
@@ -40,9 +39,9 @@ var shopping_basket = {
       this.total = ((this.total/100.0)*98.0).toFixed(2);
     } 
   }, //---------------------------------------------------
-  sum: function(card){
+  sum: function(card,cut_off){
     this.totalize();
-    this.discount();
+    this.discount(cut_off);
     this.loyalty(card);
   } //---------------------------------------------------
 };
