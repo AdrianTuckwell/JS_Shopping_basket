@@ -169,10 +169,17 @@ describe('Shopping Basket', function(){
       assert.equal(25.28, shopping_basket.total);
   });
 
-
-
-
-
+  it('should give 2 x bogof discount with items not in order', 
+  function(){
+      shopping_basket.empty();
+      shopping_basket.add(eggs);
+      shopping_basket.add(ham);
+      shopping_basket.add(eggs);
+      shopping_basket.add(ham);
+      shopping_basket.totalize();
+      assert.equal(4, shopping_basket.items.length);
+      assert.equal(20, shopping_basket.total);
+  });
 
 
 

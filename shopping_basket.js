@@ -7,6 +7,15 @@ var shopping_basket = {
   totalize: function() // provide a total price of items in basket + bogof
   { 
     this.total = 0;
+    this.items.sort(function(a, b){
+        var nameA=a.name.toLowerCase(), nameB=b.name.toLowerCase()
+        if (nameA < nameB) //sort string ascending
+            return -1 
+        if (nameA > nameB)
+            return 1
+        return 0 //default return value (no sorting)
+    })
+
     var bogof = ""; // include bogof functionality
     for (var item of this.items)
     {
@@ -37,5 +46,21 @@ var shopping_basket = {
     this.loyalty(card);
   } //---------------------------------------------------
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 module.exports = shopping_basket;
