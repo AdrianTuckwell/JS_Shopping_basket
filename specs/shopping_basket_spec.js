@@ -180,9 +180,5 @@ describe('Shopping Basket', function(){
       assert.equal(4, shopping_basket.items.length);
       assert.equal(20, shopping_basket.total);
   });
-
-
-
-
 });
 
