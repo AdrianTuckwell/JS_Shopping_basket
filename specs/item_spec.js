@@ -2,7 +2,7 @@ var item = require('../item');
 var assert = require('assert');
 
 // Item should have name
-describe('Jaffa Cakes', function(){
+describe('Item', function(){
  it('should have name', 
   function(){
     assert.equal("Jaffa Cakes", item.name);

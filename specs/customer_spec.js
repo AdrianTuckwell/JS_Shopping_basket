@@ -7,10 +7,7 @@ describe('Customer', function(){
   function(){
     assert.equal("Bobby", customer.name);
   });
-});
 
-// Item should have price
-describe('Customer', function(){
  it('should have card', 
   function(){
     assert.equal(true, customer.card);

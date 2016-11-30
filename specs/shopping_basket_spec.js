@@ -6,6 +6,7 @@ var jaffaCakes = { name: "Jaffa Cakes", price: 2.49,};
 var milk = { name: "milk", price: 0.69,};
 var chicken = { name: "chicken", price: 5.49,};
 var eggs = { name: "eggs", price: 10.00,};
+var ham = { name: "ham", price: 10.00,};
 var egg = { name: "egg", price: 1,};
 
 describe('Shopping Basket', function(){
@@ -85,7 +86,7 @@ describe('Shopping Basket', function(){
   function(){
       shopping_basket.empty();
       shopping_basket.add(eggs);
-      shopping_basket.add(eggs);
+      shopping_basket.add(ham);
       shopping_basket.totalize();
       shopping_basket.discount();
       assert.equal(2, shopping_basket.items.length);
@@ -103,18 +104,78 @@ describe('Shopping Basket', function(){
       assert.equal(1, shopping_basket.items.length);
       assert.equal(9.80, shopping_basket.total);
   });
+
+  //--------------------------------------------------------
+  it('should give bogof discount with double items', 
+  function(){
+      shopping_basket.empty();
+      shopping_basket.add(ham);
+      shopping_basket.add(ham);
+      shopping_basket.totalize();
+      assert.equal(2, shopping_basket.items.length);
+      assert.equal(10, shopping_basket.total);
+  });
+
+  //--------------------------------------------------------
+  it('should give bogof discount with double items + 1', 
+  function(){
+      shopping_basket.empty();
+      shopping_basket.add(ham);
+      shopping_basket.add(ham);
+      shopping_basket.add(ham);
+      shopping_basket.totalize();
+      assert.equal(3, shopping_basket.items.length);
+      assert.equal(20, shopping_basket.total);
+  });
+
+  //--------------------------------------------------------
+  it('should give 2 x bogof discount with 4 items', 
+  function(){
+      shopping_basket.empty();
+      shopping_basket.add(ham);
+      shopping_basket.add(ham);
+      shopping_basket.add(ham);
+      shopping_basket.add(ham);
+      shopping_basket.totalize();
+      assert.equal(4, shopping_basket.items.length);
+      assert.equal(20, shopping_basket.total);
+  });
+
+  //--------------------------------------------------------
+  it('should give bogof + discount + loyalty', 
+  function(){
+      shopping_basket.empty();
+      shopping_basket.add(ham);
+      shopping_basket.add(ham);
+      shopping_basket.add(eggs);
+      shopping_basket.add(egg);
+      shopping_basket.totalize();
+      shopping_basket.discount();
+      shopping_basket.loyalty(true);
+      assert.equal(4, shopping_basket.items.length);
+      assert.equal(18.52, shopping_basket.total);
+  });
+
+  it('should have total with dicounts in sum', 
+  function(){
+      shopping_basket.empty();
+      shopping_basket.add(jaffaCakes);
+      shopping_basket.add(milk);
+      shopping_basket.add(chicken);
+      shopping_basket.add(eggs);
+      shopping_basket.add(ham);
+      shopping_basket.sum(true);
+      assert.equal(5, shopping_basket.items.length);
+      assert.equal(25.28, shopping_basket.total);
+  });
+
+
+
+
+
+
+
+
+
 });
-
-
-
-
- 
-
-
-  
-
-
-
-
-
 
