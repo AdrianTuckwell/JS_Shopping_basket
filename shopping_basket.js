@@ -1,10 +1,10 @@
 var shopping_basket = {
-  items: [],
-  total: 0,
-  add: function( item ) { this.items.push( item );},
-  remove: function() { this.items.pop();},
-  empty: function() { this.items = [];},
-  totalize: function() 
+  items: [], // array to hold shopping basket items
+  total: 0, // running total
+  add: function( item ) { this.items.push( item );}, // add item to basket
+  remove: function() { this.items.pop();}, // remove last item in basket
+  empty: function() { this.items = [];}, // empty shopping basket
+  totalize: function() // provide a total price of items in basket + bogof
   { 
     this.total = 0;
     var bogof = ""; // include bogof functionality
@@ -17,29 +17,25 @@ var shopping_basket = {
         this.total += item.price;
       }
     }
-  },
-  discount: function(){
+  }, //---------------------------------------------------
+  discount: function() // provide discount if itme > £20
+  {
     if (this.total >= 20)
     {
       this.total = ((this.total/100.0)*90.0).toFixed(2);
     } 
-  },
+  }, //---------------------------------------------------
   loyalty: function(card){
     if (card)
     {
       this.total = ((this.total/100.0)*98.0).toFixed(2);
-
     } 
-  },
+  }, //---------------------------------------------------
   sum: function(card){
     this.totalize();
     this.discount();
     this.loyalty(card);
-  }
-
-
-
-
+  } //---------------------------------------------------
 };
 
 module.exports = shopping_basket;
